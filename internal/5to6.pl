@@ -60,9 +60,9 @@ our %data;
 for $data.trim.split("\n") -> $line {
     my @parts = $line.split(':');
     %data<code><alpha>{@parts[0]} = @parts[2];
-    %data<code><numeric>{@parts[1]} = @parts[2];
+    %data<code><num>{@parts[1]} = @parts[2];
     %data<name><alpha>{lc @parts[2]} = @parts[0];
-    %data<name><numeric>{lc @parts[2]} = @parts[1];
+    %data<name><num>{lc @parts[2]} = @parts[1];
 }
 
 CODE

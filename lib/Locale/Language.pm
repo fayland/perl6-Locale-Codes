@@ -12,12 +12,12 @@ sub data {
 
 our sub code2language($code, $codeset='alpha-3') is export {
     if $code.chars == 2 {
-        return data()<code><alpha-2>{$code};
+        return data()<code><alpha-2>{uc $code};
     } elsif $code.chars == 3 {
         if $codeset == 'term' {
-            return data()<code><term>{$code};
+            return data()<code><term>{uc $code};
         } else {
-            return data()<code><alpha-3>{$code};
+            return data()<code><alpha-3>{uc $code};
         }
     }
 }

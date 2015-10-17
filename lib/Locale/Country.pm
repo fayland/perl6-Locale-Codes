@@ -12,11 +12,11 @@ sub data {
 
 our sub code2country($code) is export {
     if $code.chars == 2 {
-        return data()<code><alpha-2>{$code};
+        return data()<code><alpha-2>{uc $code};
     } elsif $code ~~ /^\d+$/ {
         return data()<code><numeric>{$code};
     } elsif $code.chars == 3 {
-        return data()<code><alpha-3>{$code};
+        return data()<code><alpha-3>{uc $code};
     }
 }
 
