@@ -132,3 +132,36 @@ my @codes = all_language_codes(LOCALE_LANG_ALPHA_3);
 ```
 my @names = all_language_names();
 ```
+
+## Locale::Script
+
+supports
+
+ * alpha, LOCALE_SCRIPT_ALPHA
+ * num, LOCALE_SCRIPT_NUMERIC
+
+### code2script
+
+```
+my $script = code2script('phnx'); # 'Phoenician'
+```
+
+### script2code
+
+```
+my $code = script2code('Phoenician'); # 'Phnx'
+my $code = script2code('Phoenician', 'num'); # '115'
+```
+
+### all_script_codes
+
+```
+my @codes = all_script_codes(); # alpha
+my @codes = all_script_codes(LOCALE_SCRIPT_NUMERIC);
+```
+
+### all_script_names
+
+```
+my @names = all_script_names();
+```

@@ -100,3 +100,31 @@ for $data.trim.split("\n") -> $line {
 CODE
     close($fh);
 }
+
+{
+    my $script = $data->{script};
+    open(my $fh, '>', $Bin . '/../lib/Locale/Codes/Script_Codes.pm');
+    print $fh 'unit module Locale::Codes::Script_Codes;' . "\n\n";
+    print $fh 'my $data = q{' . "\n";
+    foreach my $code (sort keys %{ $script->{alpha}->{code} }) {
+        my $name = $script->{alpha}->{code}->{$code};
+        my $numeric = $script->{'num'}->{name}->{lc $name}->[0];
+        # print Dumper([$code, $numeric, $name]);
+        # die unless $dom eq $code;
+        print $fh join(':', $code, ($numeric // ''), $name) . "\n";
+    }
+    print $fh '};' . "\n";
+    print $fh <<'CODE';
+
+our %data;
+for $data.trim.split("\n") -> $line {
+    my @parts = $line.split(':');
+    %data<code><alpha>{@parts[0]} = @parts[2];
+    %data<code><num>{@parts[1]} = @parts[2] if @parts[1].chars;
+    %data<name><alpha>{lc @parts[2]} = @parts[0];
+    %data<name><num>{lc @parts[2]} = @parts[1] if @parts[1].chars;
+}
+
+CODE
+    close($fh);
+}
