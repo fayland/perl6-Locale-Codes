@@ -56,7 +56,7 @@ my @codes = all_country_codes();
 my @codes = all_country_codes(LOCALE_CODE_ALPHA_3);
 ```
 
-###
+### all_country_names
 
 ```
 my @names = all_country_names();
