@@ -8,24 +8,34 @@
 use Locale::Country;
 
 my $country = code2country('JP'); # 'Japan'
-my $country = code2country('CHN'); # 'China'
-my $country = code2country('250'); # 'France'
-
 my $code = country2code('Norway'); # 'NO'
-my $code = country2code('Norway', 'alpha-3'); # 'NOR'
-my $code = country2code('Norway', 'numeric'); # '578'
-
 my @codes = all_country_codes();
-my @codes = all_country_codes(LOCALE_CODE_ALPHA_3);
-
 my @names = all_country_names();
+
+use Locale::Currency;
+
+my $currency = code2currency('usd'); # 'US Dollar'
+my $code = currency2code('Euro'); # 'EUR'
+my @codes = all_currency_codes();
+my @names = all_currency_names();
+
+use Locale::Language;
+
+my $language = code2language('EN'); # 'English'
+my $code = language2code('French'); # 'FR'
+my @codes = all_language_codes();
+my @names = all_language_names();
 ```
 
 ## Locale::Country
 
-### code2country
+supports
 
-supports alpha-2, alpha-3, numeric
+ * alpha-2, LOCALE_CODE_ALPHA_2
+ * alpha-3, LOCALE_CODE_ALPHA_3
+ * numeric, LOCALE_CODE_NUMERIC
+
+### code2country
 
 ```
 my $country = code2country('JP'); # 'Japan'
@@ -49,15 +59,76 @@ my @codes = all_country_codes('alpha-3');
 my @codes = all_country_codes(LOCALE_CODE_NUMERIC);
 ```
 
-### all_country_codes
-
-```
-my @codes = all_country_codes();
-my @codes = all_country_codes(LOCALE_CODE_ALPHA_3);
-```
-
 ### all_country_names
 
 ```
 my @names = all_country_names();
+```
+
+## Locale::Currency
+
+supports
+
+ * alpha, LOCALE_CURR_ALPHA
+ * num, LOCALE_CURR_NUMERIC
+
+### code2currency
+
+```
+my $currency = code2currency('usd'); # 'US Dollar'
+```
+
+### currency2code
+
+```
+my $code = currency2code('Euro'); # 'EUR'
+my $code = currency2code('Euro', 'num'); # '978'
+```
+
+### all_currency_codes
+
+```
+my @codes = all_currency_codes(); # alpha
+my @codes = all_currency_codes(LOCALE_CURR_NUMERIC);
+```
+
+### all_currency_names
+
+```
+my @names = all_currency_names();
+```
+
+## Locale::Language
+
+supports
+
+ * alpha-2, LOCALE_LANG_ALPHA_2
+ * alpha-3, LOCALE_LANG_ALPHA_3
+ * term, LOCALE_LANG_TERM
+
+### code2language
+
+```
+my $language = code2language('EN'); # 'English'
+my $language = code2language('ENG', 'term'); # 'English'
+```
+
+### language2code
+
+```
+my $code = language2code('French'); # 'FR'
+my $code = language2code('French', LOCALE_LANG_ALPHA_3); # 'FRE'
+```
+
+### all_language_codes
+
+```
+my @codes = all_language_codes(); # alpha
+my @codes = all_language_codes(LOCALE_LANG_ALPHA_3);
+```
+
+### all_language_names
+
+```
+my @names = all_language_names();
 ```
