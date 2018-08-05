@@ -10,7 +10,11 @@
         "Locale::Country"  : "lib/Locale/Country.pm",
         "Locale::Currency" : "lib/Locale/Currency.pm",
         "Locale::Language" : "lib/Locale/Language.pm",
-        "Locale::Script"   : "lib/Locale/Script.pm"
+        "Locale::Script"   : "lib/Locale/Script.pm",
+        "Locale::Codes::Country_Codes": "lib/Locale/Codes/Country_Codes.pm",
+        "Locale::Codes::Currency_Codes": "lib/Locale/Codes/Currency_Codes.pm",
+        "Locale::Codes::Language_Codes": "lib/Locale/Codes/Language_Codes.pm",
+        "Locale::Codes::Script_Codes": "lib/Locale/Codes/Script_Codes.pm"
     },
     "source-url"    : "git://github.com/fayland/perl6-Locale-Codes.git"
 }
